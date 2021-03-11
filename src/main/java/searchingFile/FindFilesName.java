@@ -29,7 +29,7 @@ public class FindFilesName {
             return;
         }
         for(String file : list){
-            String temp = new StringBuffer().append(file).toString();
+            String temp = new StringBuffer(location).append(File.separator).append(file).toString();
             System.out.println(temp);
         }
     }
