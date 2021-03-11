@@ -3,8 +3,8 @@ package searchingFile;
 import java.io.File;
 
 /**
- * The function of searchingFile.FindFilesName class is find suitable file names
- * when user give as the input.
+ * The function of FindFilesName class is find match file names
+ * when user gives the extension.
  *
  * @author : Eranda Upeshitha
  * @version : 1.0
