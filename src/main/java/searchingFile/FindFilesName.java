@@ -14,27 +14,32 @@ import java.util.List;
  */
 public class FindFilesName {
 
-    public List<String> listFiles(String location, String extension){
+    private static List<String> fileLocation = new ArrayList<>();
+
+    public static void listFiles(String location, String extension){
 
         SearchFiles files = new SearchFiles(extension);
         File folder = new File(location);
-        List<String> fileLocation = new ArrayList<>();
 
         if (folder.isDirectory() == false){
             System.out.println("Folder does not exists: " +location);
-            return null;
+            return;
         }
 
         String[] list = folder.list(files);
 
         if (list.length == 0){
             System.out.println("There are no files with "+extension +" extensions.");
-            return null;
+            return;
         }
         for(String file : list){
             String temp = new StringBuffer(location).append(File.separator).append(file).toString();
             fileLocation.add(temp);
         }
+
+    }
+
+    public List<String> sendLocation(){
         return fileLocation;
     }
 }

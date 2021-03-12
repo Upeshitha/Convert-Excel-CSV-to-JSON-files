@@ -8,24 +8,39 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.commons.io.FilenameUtils;
+import searchingFile.FindFilesName;
+
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class ExceltoJSON {
 
-    private static String filePath = "E:\\User\\Downloads\\Files\\customers-1-microsoft.xlsx";
+    private static String filePath;
     private static FileWriter fileWriter;
+    private static List<String> filePaths;
+    private static int numofFiles;
 
-    public static void main(String[] args) {
+    public static void getFilePath(){
+        FindFilesName findFilesName = new FindFilesName();
+        filePaths = findFilesName.sendLocation();
+        numofFiles = filePaths.size();
+        String oldFileName;
+        String newFileName;
 
-        JsonObject object = getExcelDataAsJsonObject(new File(filePath));
-
-        writeObjects2JsonFile(object,"customers.json");
-
+        for (int i=0; i<numofFiles; i++){
+            filePath = filePaths.get(i);
+            oldFileName = filePath.substring(filePath.lastIndexOf("\\")+1);
+            newFileName = FilenameUtils.removeExtension(oldFileName).concat(".json");
+            JsonObject object = getExcelDataAsJsonObject(new File(filePath));
+            writeObjects2JsonFile(object,newFileName);
+        }
+        System.out.println("done");
     }
 
     public static JsonObject getExcelDataAsJsonObject(File excelFile) {
