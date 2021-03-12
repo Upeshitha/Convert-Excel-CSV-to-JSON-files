@@ -27,7 +27,7 @@
             <version>2.8.5</version>
         </dependency>
 
-        <!-- This dependency is used for get file names -->
+        <!-- This dependency is used for files handling -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
