@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+
+        <!-- This dependencies are used for excel to json convert -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -19,18 +21,49 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.8.5</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
+        <!-- This dependency is used for files handling -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
             <version>1.3.2</version>
+        </dependency>
+
+        <!-- This dependencies are used for csv to json convert -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.12.0-rc1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.12.0-rc1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-csv</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.simpleflatmapper</groupId>
+            <artifactId>sfm-csv</artifactId>
+            <version>8.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.simpleflatmapper</groupId>
+            <artifactId>lightning-csv</artifactId>
+            <version>8.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.simpleflatmapper</groupId>
+            <artifactId>sfm-csv-jre6</artifactId>
+            <version>8.2.3</version>
         </dependency>
 
     </dependencies>

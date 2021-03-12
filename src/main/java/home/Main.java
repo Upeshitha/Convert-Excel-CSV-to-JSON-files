@@ -1,8 +1,10 @@
 package home;
 
+import csvConvert.CSVtoJSON;
 import excelConvert.ExceltoJSON;
 import searchingFile.FindFilesName;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -16,13 +18,13 @@ import java.util.Scanner;
 public class Main {
 
     private static String fileType;
+    private static String userInput;
     private static final String fileLocation = "E:\\User\\Downloads\\Files";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Main main = new Main();
         main.chooseFileType();
-        FindFilesName.listFiles(fileLocation,fileType);
-        ExceltoJSON.getFilePath();
+        main.convertFile(userInput);
     }
 
     public void chooseFileType(){
@@ -30,7 +32,25 @@ public class Main {
 
         System.out.println("What type of files do you want to convert to JSON? \n" +
                 "excel or csv");
-        fileType = input.nextLine();
+        userInput = input.nextLine();
+    }
+
+    public void convertFile(String type) throws IOException {
+        if (type.equalsIgnoreCase("excel")){
+            fileType = ".xlsx";
+            FindFilesName.listFiles(fileLocation,fileType);
+            ExceltoJSON.getFilePath();
+        } else if (type.equalsIgnoreCase("csv")){
+            fileType = ".csv";
+            FindFilesName.listFiles(fileLocation,fileType);
+            CSVtoJSON.getCSVPath();
+        }else {
+            System.out.println("Sorry, this file type cannot be convert.");
+        }
+    }
+
+    public static String getFileLocation(){
+        return fileLocation;
     }
 
 }

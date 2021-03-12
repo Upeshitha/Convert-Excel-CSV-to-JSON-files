@@ -2,6 +2,8 @@ package excelConvert;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import home.Main;
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -10,7 +12,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.commons.io.FilenameUtils;
 import searchingFile.FindFilesName;
-
 
 import java.io.File;
 import java.io.FileWriter;
@@ -26,7 +27,7 @@ public class ExceltoJSON {
     private static List<String> filePaths;
     private static int numofFiles;
 
-    public static void getFilePath(){
+    public static void getFilePath() throws IOException {
         FindFilesName findFilesName = new FindFilesName();
         filePaths = findFilesName.sendLocation();
         numofFiles = filePaths.size();
@@ -40,7 +41,7 @@ public class ExceltoJSON {
             JsonObject object = getExcelDataAsJsonObject(new File(filePath));
             writeObjects2JsonFile(object,newFileName);
         }
-        System.out.println("done");
+        System.out.println("Successfully converted");
     }
 
     public static JsonObject getExcelDataAsJsonObject(File excelFile) {
@@ -108,9 +109,14 @@ public class ExceltoJSON {
 
     }
 
-    private static void writeObjects2JsonFile(JsonObject customers, String pathFile){
+    private static void writeObjects2JsonFile(JsonObject customers, String pathFile) throws IOException {
+
+        String newPath = Main.getFileLocation().concat("\\json\\excel\\");
+        String create = newPath.concat(pathFile);
+        FileUtils.forceMkdir(new File(newPath)); //create new directory
+
         try {
-            fileWriter = new FileWriter(pathFile);
+            fileWriter = new FileWriter(create);
             fileWriter.write(String.valueOf(customers));
 
         } catch (IOException e) {
