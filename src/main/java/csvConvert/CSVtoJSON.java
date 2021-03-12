@@ -3,6 +3,7 @@ package csvConvert;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
+import home.Main;
 import org.apache.commons.io.FilenameUtils;
 import org.simpleflatmapper.csv.CsvParser;
 import org.simpleflatmapper.lightningcsv.CloseableCsvReader;
@@ -34,6 +35,7 @@ public class CSVtoJSON {
             newFileName = FilenameUtils.removeExtension(oldFileName).concat(".json");
             CSVtoJSON.convertCSV(filePath,newFileName);
         }
+        System.out.println("Successfully converted");
     }
 
     public static void convertCSV(String path, String fileName) throws IOException {

@@ -45,8 +45,12 @@ public class Main {
             FindFilesName.listFiles(fileLocation,fileType);
             CSVtoJSON.getCSVPath();
         }else {
-            System.out.println("Sorry this file type cannot be convert");
+            System.out.println("Sorry, this file type cannot be convert.");
         }
+    }
+
+    public static String getFileLocation(){
+        return fileLocation;
     }
 
 }

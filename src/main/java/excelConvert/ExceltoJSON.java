@@ -2,6 +2,7 @@ package excelConvert;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import home.Main;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -10,7 +11,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.commons.io.FilenameUtils;
 import searchingFile.FindFilesName;
-
 
 import java.io.File;
 import java.io.FileWriter;
@@ -40,7 +40,7 @@ public class ExceltoJSON {
             JsonObject object = getExcelDataAsJsonObject(new File(filePath));
             writeObjects2JsonFile(object,newFileName);
         }
-        System.out.println("done");
+        System.out.println("Successfully converted");
     }
 
     public static JsonObject getExcelDataAsJsonObject(File excelFile) {
