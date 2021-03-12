@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import home.Main;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.simpleflatmapper.csv.CsvParser;
 import org.simpleflatmapper.lightningcsv.CloseableCsvReader;
@@ -46,8 +47,11 @@ public class CSVtoJSON {
 
         Iterator<String[]> iterator = reader.iterator();
         String[] headers = iterator.next();
+        String newPath = Main.getFileLocation().concat("\\json\\csv\\");
+        String create = newPath.concat(fileName);
+        FileUtils.forceMkdir(new File(newPath)); //create new directory
 
-        try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(new File(fileName),
+        try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(new File(create),
                 JsonEncoding.UTF8)) {
 
             jsonGenerator.writeStartArray();
