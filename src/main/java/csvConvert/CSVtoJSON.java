@@ -16,6 +16,14 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The CSVtoJSON class is used for to convert
+ * csv file to the json format.
+ *
+ * @author : Eranda Upeshitha
+ * @version : 1.0
+ * @since : 2021/03/12
+ */
 public class CSVtoJSON {
 
     private static String filePath;
@@ -23,12 +31,18 @@ public class CSVtoJSON {
     private static List<String> filePaths;
     private static int numofFiles;
 
+    /**
+     * Get the full list of csv file collection and
+     * convert these files to json format one by one.
+     *
+     * @throws IOException
+     */
     public static void getCSVPath() throws IOException {
         FindFilesName findFilesName = new FindFilesName();
         filePaths = findFilesName.sendLocation();
         numofFiles = filePaths.size();
-        String oldFileName;
-        String newFileName;
+        String oldFileName; // with csv file extension
+        String newFileName; // with json file extension
 
         for (int i=0; i<numofFiles; i++){
             filePath = filePaths.get(i);
@@ -39,6 +53,13 @@ public class CSVtoJSON {
         System.out.println("Successfully converted");
     }
 
+    /**
+     * convert csv to json format
+     *
+     * @param path  file location
+     * @param fileName
+     * @throws IOException
+     */
     public static void convertCSV(String path, String fileName) throws IOException {
         File input = new File(path);
         CloseableCsvReader reader = CsvParser.reader(input);

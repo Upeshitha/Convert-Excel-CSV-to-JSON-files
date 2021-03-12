@@ -16,6 +16,12 @@ public class FindFilesName {
 
     private static List<String> fileLocation = new ArrayList<>();
 
+    /**
+     * search user type file type is there in the folder.
+     *
+     * @param location   get full file location
+     * @param extension  get file extension
+     */
     public static void listFiles(String location, String extension){
 
         SearchFiles files = new SearchFiles(extension);
@@ -39,6 +45,14 @@ public class FindFilesName {
 
     }
 
+    /**
+     * Send user want files with full directory name
+     *
+     * @return fileLocation which is a list collection that stores data
+     * as a string data type
+     * fileLocation is included full directory with file names which are
+     * required to convert to json format
+     */
     public List<String> sendLocation(){
         return fileLocation;
     }

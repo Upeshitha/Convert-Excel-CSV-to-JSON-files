@@ -20,6 +20,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The ExceltoJSON class is used for to convert
+ * excel file to the json format.
+ *
+ * @author : Eranda Upeshitha
+ * @version : 1.0
+ * @since : 2021/03/11
+ */
 public class ExceltoJSON {
 
     private static String filePath;
@@ -27,12 +35,18 @@ public class ExceltoJSON {
     private static List<String> filePaths;
     private static int numofFiles;
 
+    /**
+     * Get the full list of excel file collection and
+     * convert these files to json format one by one.
+     *
+     * @throws IOException
+     */
     public static void getFilePath() throws IOException {
         FindFilesName findFilesName = new FindFilesName();
         filePaths = findFilesName.sendLocation();
         numofFiles = filePaths.size();
-        String oldFileName;
-        String newFileName;
+        String oldFileName; // with excel file extension
+        String newFileName; // with json file extension
 
         for (int i=0; i<numofFiles; i++){
             filePath = filePaths.get(i);
@@ -44,11 +58,19 @@ public class ExceltoJSON {
         System.out.println("Successfully converted");
     }
 
+    /**
+     * Read the excel file and sheet data
+     * identify numbers of sheets, columns, and rows
+     * if cell contains text data it convert string format
+     * if cell contains numeric data it convert numeric format, like that
+     *
+     * @param excelFile get full file path file is located
+     * @return sheetsJsonObject object list of json files
+     */
     public static JsonObject getExcelDataAsJsonObject(File excelFile) {
 
         JsonObject sheetsJsonObject = new JsonObject();
         Workbook workbook = null;
-
 
         try {
             workbook = new XSSFWorkbook(excelFile);
@@ -89,7 +111,6 @@ public class ExceltoJSON {
                         }
 
                     }
-
                     sheetArray.add(jsonObject);
 
                 } else {
@@ -98,26 +119,27 @@ public class ExceltoJSON {
                         columnNames.add(currentRow.getCell(k).getStringCellValue());
                     }
                 }
-
             }
-
             sheetsJsonObject.add(workbook.getSheetName(i), sheetArray);
-
         }
-
         return sheetsJsonObject;
-
     }
 
-    private static void writeObjects2JsonFile(JsonObject customers, String pathFile) throws IOException {
+    /**
+     * convert json object to file format
+     * @param listFiles store all json file objects
+     * @param fileName
+     * @throws IOException
+     */
+    private static void writeObjects2JsonFile(JsonObject listFiles, String fileName) throws IOException {
 
         String newPath = Main.getFileLocation().concat("\\json\\excel\\");
-        String create = newPath.concat(pathFile);
+        String create = newPath.concat(fileName);
         FileUtils.forceMkdir(new File(newPath)); //create new directory
 
         try {
             fileWriter = new FileWriter(create);
-            fileWriter.write(String.valueOf(customers));
+            fileWriter.write(String.valueOf(listFiles));
 
         } catch (IOException e) {
             e.printStackTrace();
