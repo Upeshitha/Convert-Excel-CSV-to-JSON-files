@@ -1,6 +1,8 @@
 package searchingFile;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The function of FindFilesName class is find match file names
@@ -12,7 +14,9 @@ import java.io.File;
  */
 public class FindFilesName {
 
-    public void listFiles(String location, String extension){
+    private static List<String> fileLocation = new ArrayList<>();
+
+    public static void listFiles(String location, String extension){
 
         SearchFiles files = new SearchFiles(extension);
         File folder = new File(location);
@@ -29,8 +33,13 @@ public class FindFilesName {
             return;
         }
         for(String file : list){
-            String temp = new StringBuffer().append(file).toString();
-            System.out.println(temp);
+            String temp = new StringBuffer(location).append(File.separator).append(file).toString();
+            fileLocation.add(temp);
         }
+
+    }
+
+    public List<String> sendLocation(){
+        return fileLocation;
     }
 }

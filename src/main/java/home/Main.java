@@ -1,5 +1,6 @@
 package home;
 
+import excelConvert.ExceltoJSON;
 import searchingFile.FindFilesName;
 
 import java.util.Scanner;
@@ -20,8 +21,8 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         main.chooseFileType();
-        FindFilesName findFilesName = new FindFilesName();
-        findFilesName.listFiles(fileLocation,fileType);
+        FindFilesName.listFiles(fileLocation,fileType);
+        ExceltoJSON.getFilePath();
     }
 
     public void chooseFileType(){
@@ -32,7 +33,4 @@ public class Main {
         fileType = input.nextLine();
     }
 
-    public String getFileType(){
-        return fileType;
-    }
 }
