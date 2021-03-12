@@ -22,7 +22,6 @@ These are some features of this project.
 ## Output
 <img src="https://github.com/Upeshitha/excel-csv-file-convert-to-json/blob/main/Raw%20data/Image/output1.PNG" alt="upeshitha-output">
 <img src="https://github.com/Upeshitha/excel-csv-file-convert-to-json/blob/main/Raw%20data/Image/output2.PNG" alt="upeshitha-output">
-<img src="https://github.com/Upeshitha/excel-csv-file-convert-to-json/blob/main/Raw%20data/Video/output.gif" alt="output-gif">
 
 ## Dependencies
 These dependencies are used for excel to json convert
