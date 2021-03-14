@@ -7,7 +7,7 @@ Convert Excel and CSV files to JSON format according to the user request separat
 ## Overview
 This project is an improvement version of my previous two projects. If you want to get more knowledge about this project please follow these two project also.
 * https://github.com/Upeshitha/exceltoJSON
-*https://github.com/Upeshitha/Search-Files-in-Folder
+* https://github.com/Upeshitha/Search-Files-in-Folder
 
 These are some features of this project.
 * Identify file name according to the file extension.
